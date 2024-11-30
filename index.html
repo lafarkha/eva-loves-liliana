@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Love Eva?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: url('https://image.pollinations.ai/prompt/A%20majestic%20and%20graceful%20tiger%20in%20a%20dynamic%20and%20artistic%20style%2C%20surrounded%20by%20vibrant%20colors%20and%20natural%20elements.') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .question {
+      font-size: 24px;
+      margin: 20px 0;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #ffd700;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    .button:hover {
+      background-color: #ffac33;
+    }
+    #no, #yes {
+      position: relative;
+    }
+    .hidden {
+      display: none;
+    }
+    .final-message {
+      font-size: 30px;
+      margin-top: 30px;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="question">Do you love Eva?</div>
+  <div class="buttons">
+    <button id="yes" class="button">Yes</button>
+    <button id="no" class="button">No</button>
+    <button id="shikshakshok" class="button">Shik Shak Shok</button>
+  </div>
+  <div id="finalMessage" class="final-message hidden">Of course, you do! 💖</div>
+  <div id="shikShakResponse" class="final-message hidden">Eva loves Shik Shak Shok! 😍</div>
+
+  <script>
+    const noButton = document.getElementById('no');
+    const yesButton = document.getElementById('yes');
+    const shikShakShokButton = document.getElementById('shikshakshok');
+    const finalMessage = document.getElementById('finalMessage');
+    const shikShakResponse = document.getElementById('shikShakResponse');
+
+    // Función que hace mover el botón
+    function moveButton(button) {
+      const x = Math.random() * window.innerWidth - 100;
+      const y = Math.random() * window.innerHeight - 100;
+      button.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // Mover los botones "Yes" y "No" cuando se pasa el mouse sobre ellos
+    noButton.addEventListener('mouseover', () => moveButton(noButton));
+    yesButton.addEventListener('mouseover', () => moveButton(yesButton));
+
+    // Mostrar el mensaje final cuando se presiona 'Yes'
+    yesButton.addEventListener('click', () => {
+      finalMessage.classList.remove('hidden');
+      yesButton.style.display = 'none';
+      noButton.style.display = 'none';
+      shikShakShokButton.style.display = 'none';
+    });
+
+    // Hacer que el botón 'No' continúe moviéndose y no permita click
+    noButton.addEventListener('click', () => {
+      moveButton(noButton);
+    });
+
+    // Al hacer clic en 'Shik Shak Shok', mostrar el mensaje "Eva loves Shik Shak Shok"
+    shikShakShokButton.addEventListener('click', () => {
+      shikShakResponse.classList.remove('hidden');
+      yesButton.style.display = 'none';
+      noButton.style.display = 'none';
+      shikShakShokButton.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
